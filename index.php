@@ -8,7 +8,7 @@ FROM fichajes
 JOIN usuarios ON fichajes.usuario_id = usuarios.id 
 WHERE fichajes.fecha = ? 
 ORDER BY fichajes.hora DESC 
-LIMIT 10";
+LIMIT 5";
 $consulta = $conn->prepare($sql);
 $consulta->bindParam(1, $hoy);
 $consulta->execute();
