@@ -21,44 +21,62 @@ $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <title>Sistema de Fichaje</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-
-<body>
-<style>
+    <style>
         body {
             background: url('https://source.unsplash.com/3Z70SDuYs5g/1920x1080') no-repeat center center fixed;
             background-size: cover;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
+
         .container {
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             padding: 20px;
+            width: 100%;
+            max-width: 700px;
         }
-        h2, h4 {
+
+        h2,
+        h4 {
             color: white;
         }
+
         .form-control {
             background-color: rgba(255, 255, 255, 0.8);
         }
-        .btn-primary, .btn-primary:hover, .btn-primary:focus {
+
+        .btn-primary,
+        .btn-primary:hover,
+        .btn-primary:focus {
             background-color: #0062cc;
             border-color: #0056b3;
         }
+
         .table {
             color: white;
         }
+
         .table thead {
             background-color: #343a40;
         }
-        .table td, .table th {
+
+        .table td,
+        .table th {
             background-color: rgba(52, 58, 64, 0.8);
         }
     </style>
-    <div class="container mt-5">
+</head>
+
+<body>
+    <div class="container">
         <h2 class="text-center">Fecha de hoy: <?php echo $hoy; ?></h2>
-        <div class="row mt-4">
-            <div class="col-md-4 offset-md-4">
+        <div class="row mt-4 justify-content-center">
+            <div class="col-12">
                 <h2 class="text-center">Iniciar sesión</h2>
                 <form method="POST" action="validar">
                     <div class="form-group">

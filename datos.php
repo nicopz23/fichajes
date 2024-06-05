@@ -58,9 +58,9 @@ if (isset($_POST["b"])) {
         $sub->bindParam(2, $hoy);
         $sub->bindParam(3, $tipo);
         $sub->execute();
-        if($sub->rowCount() > 0){
+        if ($sub->rowCount() > 0) {
             $error = 'Ya fichaste una salida';
-        }else{
+        } else {
             $sql_insert = 'INSERT INTO fichajes (usuario_id,tipo) values (?,?)';
             $insert = $conn->prepare($sql_insert);
             $insert->bindParam(1, $id);
@@ -90,34 +90,57 @@ if (isset($_POST["b"])) {
             background: url('https://source.unsplash.com/3Z70SDuYs5g/1920x1080') no-repeat center center fixed;
             background-size: cover;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
+
         .container {
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 15px;
             padding: 20px;
+            width: 100%;
+           
         }
+
         .card {
             background-color: rgba(0, 0, 0, 0.6);
             border: none;
         }
+
         .card-body {
             padding: 20px;
         }
-        h2, h3, h5 {
+
+        h2,
+        h3,
+        h5 {
             color: white;
         }
+
         .form-control {
             background-color: rgba(255, 255, 255, 0.8);
         }
-        .btn-primary, .btn-primary:hover, .btn-primary:focus, 
-        .btn-danger, .btn-danger:hover, .btn-danger:focus {
+
+        .btn-primary,
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-danger,
+        .btn-danger:hover,
+        .btn-danger:focus {
             background-color: #0062cc;
             border-color: #0056b3;
         }
-        .btn-danger, .btn-danger:hover, .btn-danger:focus {
+
+        .btn-danger,
+        .btn-danger:hover,
+        .btn-danger:focus {
             background-color: #dc3545;
             border-color: #bd2130;
         }
+
         .text-danger {
             color: #dc3545;
         }
@@ -125,12 +148,20 @@ if (isset($_POST["b"])) {
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container">
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">Bienvenido, <?php echo htmlspecialchars($nombre); ?></h2>
                 <h5 class="card-subtitle mb-2 text-muted"><?php echo htmlspecialchars($dni); ?></h5>
-                <p class="text-danger"><?php if(isset($error)){ echo $error;} ?></p>
+                <p class="text-danger"><?php if (isset($error)) {
+                                            echo $error;
+                                            echo '<p class="text-danger">Dentro de 3 segundos se reiniciara la pagina </p> ';
+                                            echo '<script>
+                                                    setTimeout(function(){
+                                                        window.location.href = "./";
+                                                    }, 3000);
+                                                </script>';
+                                        } ?></p>
                 <h3 class="mt-4">Fichar</h3>
                 <div class="row mt-3">
                     <div class="col-md-6">
