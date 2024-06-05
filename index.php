@@ -77,6 +77,9 @@ $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
         <h2 class="text-center">Fecha de hoy: <?php echo $hoy; ?></h2>
         <div class="row mt-4 justify-content-center">
             <div class="col-12">
+            <p class="text-danger"><?php if (isset($_SESSION["error"])) {
+                                            echo $_SESSION["error"];
+                                        } ?></p>
                 <h2 class="text-center">Iniciar sesión</h2>
                 <form method="POST" action="validar">
                     <div class="form-group">

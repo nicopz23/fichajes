@@ -4,7 +4,6 @@ include 'conexion.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dni = ($_POST['dni']);
     $password = $_POST['password'];
-var_dump($dni);
     $sql = "SELECT * FROM usuarios WHERE dni=? ";
     $consulta = $conn->prepare($sql);
     $consulta->bindParam(1,$dni);
@@ -17,10 +16,11 @@ var_dump($dni);
             $dni = $result['dni'];
             header("Location: datos?nombre=$nombre&dni=$dni");
         } else {
-            echo  "Contraseña incorrecta.";
-
+            $error =  "Contraseña incorrecta.";
+            $_SESSION["error"] = $error;
         }
     } else {
-        echo "DNI no encontrado.";
+        $error = "DNI no encontrado.";
+        $_SESSION["error"] = $error;
     }
 }
